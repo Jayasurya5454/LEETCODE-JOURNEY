@@ -1,6 +1,7 @@
 class Solution {
     public int[] xorQueries(int[] arr, int[][] queries) {
-        ArrayList<Integer> lst =new ArrayList<>();
+        int result[] = new int[queries.length];
+        int r =0;
         for(int i =0;i<queries.length;i++)
         {
             int f = queries[i][0];
@@ -10,12 +11,11 @@ class Solution {
             {
                 val^=arr[p];
             }
-            lst.add(val);
+            result[r]=val;
+            r++;
+            
         }
-        int result[] = new int[lst.size()];
-        for (int i = 0; i < lst.size(); i++) {
-            result[i] = lst.get(i);
-        }
+        
         return result;
         
     }
