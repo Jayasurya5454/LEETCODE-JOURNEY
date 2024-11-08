@@ -1,10 +1,17 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Arrays.sort(nums);
-        for(int i=0;i< nums.length-1;i=i+2)
+    //     Arrays.sort(nums);
+    //     for(int i=0;i< nums.length-1;i=i+2)
+    //     {
+    //         if(nums[i]!=nums[i+1]) return nums[i];
+    //     }
+    //  return nums[nums.length-1];   
+
+        int r =0;
+        for(int i:nums)
         {
-            if(nums[i]!=nums[i+1]) return nums[i];
+            r^=i;
         }
-     return nums[nums.length-1];   
+        return r;
     }
 }
