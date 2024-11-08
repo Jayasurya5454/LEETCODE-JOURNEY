@@ -4,7 +4,6 @@ class Solution {
         for(int i=0;i<nums.length;i++)
         {
              res^=nums[i]^i;
-             System.out.println(res);
         }
         return res;
        
