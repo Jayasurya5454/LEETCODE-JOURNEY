@@ -1,24 +1,25 @@
 class Solution {
-    int functscall(int j, int[] nums2) {
-        for (int i = j + 1; i < nums2.length; i++) {
-            if (nums2[i] > nums2[j]) {
-                return nums2[i];
-            }
-        }
-        return -1;
-    }
-
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        int arr[] = new int[nums1.length];
-        for (int p = 0; p < nums1.length; p++) {
-            for (int j = 0; j < nums2.length; j++) {
-                if (nums1[p] == nums2[j]) {
-                    arr[p] = functscall(j, nums2); 
-                    break;
-                }
+        Stack<Integer> st = new Stack<>();
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int num2: nums2)
+        {
+            while(!st.empty()&&num2>st.peek())
+            {
+                hm.put(st.pop(),num2);
             }
+            st.push(num2);
         }
+        while(!st.empty())
+        {
+             hm.put(st.pop(),-1);
 
-        return arr;
+        }
+        for(int i=0;i<nums1.length;i++)
+        {
+            nums1[i]= hm.get(nums1[i]);
+        }
+        return nums1;
+        
     }
 }
